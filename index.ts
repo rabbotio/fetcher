@@ -18,10 +18,14 @@ const postJSON = (uri, body = {}) =>
     headers: { 'Content-Type': 'application/json' }
   }).then(handleResponseError)
 
-const getJSON = (uri, body?) => {
+const getJSON = (uri, body?, origin = '*', mode = 'cors' as RequestMode) => {
   const queryString = body ? `?${jsonToQueryString(body)}` : ''
   return fetch(`${uri}${queryString}`, {
-    headers: { 'Content-Type': 'application/json' }
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': origin
+    },
+    mode
   }).then(handleResponseError)
 }
 
