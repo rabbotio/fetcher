@@ -2,7 +2,7 @@ import 'isomorphic-fetch'
 
 const jsonToQueryString = json => {
   let params = []
-  for (var k in json) params.push(`${k}=${json[k]}`)
+  for (var k in json) params.push(`${k}=${encodeURIComponent(json[k])}`)
   return params.join('&')
 }
 
