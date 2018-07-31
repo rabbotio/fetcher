@@ -25,4 +25,17 @@ const json = await getJSON(`https://bx.in.th/api/tradehistory/`, {
   date: '2017-12-12'
 })
 console.log(json)
+
+// passing headers
+const json = await postJSON(`${this.facebookURL}?access_token=${accessToken}`, {
+  recipient: {
+    id: recipientId
+  },
+  message: {
+    text: messageText
+  }
+}, {
+  'Authorization': `Bearer ${accessToken}`,
+})
+console.log(json)
 ```
