@@ -25,4 +25,13 @@ const json = await getJSON(`https://bx.in.th/api/tradehistory/`, {
   date: '2017-12-12'
 })
 console.log(json)
+
+// passing headers
+const json = await postJSON('https://api.line.me/v2/bot/message/reply', {
+    replyToken: replyToken,
+    messages: messages
+  }, {
+  'Authorization': `Bearer ${accessToken}`,
+})
+console.log(json)
 ```

@@ -1,4 +1,4 @@
-require('isomorphic-fetch')
+import 'isomorphic-fetch'
 
 const jsonToQueryString = json => {
   let params = []
@@ -11,19 +11,21 @@ const handleResponseError = response => {
   return response.json()
 }
 
-const postJSON = (uri, body = {}) =>
+const buildJSONHeaders = (headers) => {
+  return Object.assign({}, headers, { 'Content-Type': 'application/json' })
+}
+
+const postJSON = (uri, body = {}, { headers = {} } = {}) =>
   fetch(uri, {
     method: 'POST',
     body: JSON.stringify(body),
-    headers: { 'Content-Type': 'application/json' }
+    headers: buildJSONHeaders(headers)
   }).then(handleResponseError)
 
-const getJSON = (uri, body?, mode = 'cors' as RequestMode) => {
+const getJSON = (uri, body?, { mode = 'cors' as RequestMode, headers = {} } = {}) => {
   const queryString = body ? `?${jsonToQueryString(body)}` : ''
   return fetch(`${uri}${queryString}`, {
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: buildJSONHeaders(headers),
     mode
   }).then(handleResponseError)
 }
