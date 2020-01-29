@@ -1,6 +1,6 @@
 {
   "name": "@rabbotio/fetcher",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Simply fetch get/post as json",
   "main": "index.js",
   "author": "katopz <katopz@gmail.com>",
@@ -16,10 +16,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^10.12.21",
-    "@types/jest": "^23.3.13",
-    "jest": "^24.0.0",
-    "typescript": "^3.3.1"
+    "@types/node": "^13.5.1",
+    "@types/jest": "^25.1.0",
+    "jest": "^25.1.0",
+    "typescript": "^3.7.5"
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1"

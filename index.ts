@@ -11,18 +11,18 @@ const handleResponseError = response => {
   return response.json()
 }
 
-const buildJSONHeaders = (headers) => {
+const buildJSONHeaders = headers => {
   return Object.assign({}, headers, { 'Content-Type': 'application/json' })
 }
 
-const postJSON = (uri, body = {}, { headers = {} } = {}) =>
+const postJSON = (uri: RequestInfo, body: object = {}, { headers = {} } = {}) =>
   fetch(uri, {
     method: 'POST',
     body: JSON.stringify(body),
     headers: buildJSONHeaders(headers)
   }).then(handleResponseError)
 
-const getJSON = (uri, body?, { mode = 'cors' as RequestMode, headers = {} } = {}) => {
+const getJSON = (uri: RequestInfo, body?: object, { mode = 'cors' as RequestMode, headers = {} } = {}) => {
   const queryString = body ? `?${jsonToQueryString(body)}` : ''
   return fetch(`${uri}${queryString}`, {
     headers: buildJSONHeaders(headers),
